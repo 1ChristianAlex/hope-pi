@@ -1,5 +1,7 @@
 {
   "name": "hope-pi",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

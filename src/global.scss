@@ -9,3 +9,38 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,900,900i');
+
+///Color Variables 
+$headerFooter: #4a4b80;
+$titleColor: white;
+body{
+    font-family: 'Fira Sans', sans-serif!important;
+    
+}
+ion-toolbar,ion-tab-bar{
+    --background: #4a4b80;
+    --color	:white;
+}
+ion-content.login-content{
+    --background: #4a4b80;
+    --padding-start:15px;
+    --padding-end:15px;
+    form{
+        border: 1px solid #deb841;
+        border-radius: 5px;
+        ion-label{
+            --color:white;
+        }
+    }
+    ion-button {
+        --background: #deb841;
+        margin:15px 0;
+    }
+    ion-item{ 
+        --background:#4a4b80;
+        ion-input{
+          
+        }
+    }
+}

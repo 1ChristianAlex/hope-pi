@@ -1,0 +1,19 @@
+<ion-content class="login-content">
+  <ion-img src="../../assets/logo.png"></ion-img>
+  <form (ngSubmit)="loginApp(user)">
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="user.email" name = 'email' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="user.pass" name = 'pass' type="password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">
+      Entrar
+    </ion-button>
+  </form>
+  <ion-button href="signin" expand="block">
+    Cadastrar
+  </ion-button>
+</ion-content>
