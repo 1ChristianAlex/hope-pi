@@ -12,35 +12,53 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,900,900i');
 
 ///Color Variables 
-$headerFooter: #4a4b80;
+$headerFooter: #E76F51;
 $titleColor: white;
+.tab-selected{
+    color:#1e555c;
+    --ion-color-primary:#1e555c;
+    ion-icon{
+        color:#1e555c;
+        --ion-color-primary:#1e555c;
+    }
+}
+
+
 body{
     font-family: 'Fira Sans', sans-serif!important;
     
 }
 ion-toolbar,ion-tab-bar{
-    --background: #4a4b80;
+    --background: #E76F51;
     --color	:white;
 }
 ion-content.login-content{
-    --background: #4a4b80;
+    --background: #E76F51;
     --padding-start:15px;
     --padding-end:15px;
     form{
-        border: 1px solid #deb841;
         border-radius: 5px;
         ion-label{
             --color:white;
         }
     }
     ion-button {
-        --background: #deb841;
+        --background: #E9C46A;
         margin:15px 0;
     }
     ion-item{ 
-        --background:#4a4b80;
+        --background:#E76F51;
         ion-input{
-          
+            
         }
     }
+}
+ion-content.login-content.sign-in{
+    .image{
+        ion-img{
+         width: 40%;
+         margin: 0 auto;
+        }
+    }
+    
 }

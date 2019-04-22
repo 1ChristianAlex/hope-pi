@@ -1,9 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signin</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content class="login-content sign-in">
+  <ion-item class = 'image'>
+      <ion-img src="../../assets/logo-no-bg.png"></ion-img>
+  </ion-item>
+  <form (ngSubmit)="newUser(userSignin)">
+    <ion-item>
+      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="userSignin.name" name = 'pass' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="userSignin.email" name = 'email' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input [(ngModel)]="userSignin.emailC" name = 'emailC' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="userSignin.pass" name = 'pass' type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="userSignin.passC" name = 'passC' type="password"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block">
+      Cadastrar
+    </ion-button>
+    <ion-button (click)="navigateRouter('login')" expand="block">
+      Voltar
+    </ion-button>
+  </form>
+  
 </ion-content>

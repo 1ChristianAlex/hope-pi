@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+
+
 import { fireApi } from "./firebaseConf";
 
 @NgModule({
@@ -30,6 +32,7 @@ import { fireApi } from "./firebaseConf";
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}
