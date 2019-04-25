@@ -5,7 +5,15 @@
   <form (ngSubmit)="newUser(userSignin)">
     <ion-item>
       <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input  [(ngModel)]="userSignin.name" name = 'pass' type="text"></ion-input>
+      <ion-input  [(ngModel)]="userSignin.name" name = 'name' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Sobrenome <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  [(ngModel)]="userSignin.lastname" name = 'lastname' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Data de nascimento <ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="userSignin.bornDate" name = 'bornDate'></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
@@ -16,11 +24,11 @@
       <ion-input [(ngModel)]="userSignin.emailC" name = 'emailC' type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating">Senha <ion-text color="danger">*</ion-text></ion-label>
       <ion-input  [(ngModel)]="userSignin.pass" name = 'pass' type="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Confirme Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating">Confirme Senha <ion-text color="danger">*</ion-text></ion-label>
       <ion-input  [(ngModel)]="userSignin.passC" name = 'passC' type="password"></ion-input>
     </ion-item>
     <ion-button type="submit" expand="block">

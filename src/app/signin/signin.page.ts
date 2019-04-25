@@ -19,7 +19,10 @@ export class SigninPage implements OnInit {
     pass:'',
     emailC:'',
     passC:'',
-    name:''
+    name:'',
+    lastname:'',
+    bornDate:'',
+    btnConfig:false
   }; 
   public newUser(user:newUser){
 
@@ -38,7 +41,7 @@ export class SigninPage implements OnInit {
       }
       else{
         matchs.push(false)
-        this.toast.UtilitsMetods('Senha não confere')
+        this.toast.UtilitsMetods('Senha não confere');
       }
       if (mailRegex.test(userV.email)) {
         matchs.push(true)
@@ -53,7 +56,7 @@ export class SigninPage implements OnInit {
     }
 
     this.auth.newUser(validateFilds(user)).then(()=>{
-      this.router.navigate(['/app']);
+        this.router.navigate(['/app']);
     }).catch(err =>{
       this.toast.UtilitsMetods(err)
     })

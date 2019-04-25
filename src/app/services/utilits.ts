@@ -17,6 +17,7 @@ export class UtilitsMetods{
         toast.present();
     }
     public navigateRouter(path:string){
-        this.router.navigate([`/${path}`])
+        let url = new URL(location.href);
+        this.router.navigate([`${url.pathname}/${path}`]);
       }
 }

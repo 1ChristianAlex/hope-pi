@@ -36,11 +36,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'calendar',
+        path: 'alertPage',
         children: [
           {
             path: '',
-            loadChildren: '../calendar/calendar.module#CalendarPageModule'
+            loadChildren: '../alert-page/alert-page.module#AlertPagePageModule'
           }
         ]
       },
@@ -50,6 +50,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../config/config.module#ConfigPageModule'
+          },
+          {
+            path:'alertConfig',
+            loadChildren:'../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
           }
         ]
       },

@@ -5,7 +5,6 @@ const routes: Routes = [
   { path: '', canActivate: [AuthGuardService],loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' }
-  
 ];
 @NgModule({
   imports: [
