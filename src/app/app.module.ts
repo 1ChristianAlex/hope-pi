@@ -13,6 +13,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+import { IonicStorageModule } from "@ionic/storage";
 
 import { fireApi } from "./firebaseConf";
 
@@ -25,7 +26,11 @@ import { fireApi } from "./firebaseConf";
     AppRoutingModule,
     AngularFireModule.initializeApp(fireApi),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   providers: [
     StatusBar,

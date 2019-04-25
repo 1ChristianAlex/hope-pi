@@ -52,6 +52,8 @@ export class LoginPage implements OnInit {
           this.router.navigate(['/app'])
         }
       }).catch((err:auth.Error)=>{
+        console.log(verifyStringAcess())
+        console.log(err.message)
         this.UtilitsMetods.UtilitsMetods('Email ou senha invalidos')
       });
     }

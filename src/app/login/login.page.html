@@ -1,6 +1,6 @@
 <ion-content class="login-content">
-  <ion-img src="../../assets/logo-no-bg.png"></ion-img>
-  <form (ngSubmit)="loginApp(user)">
+  <ion-img src="../../assets/logo-white-no-bg.png"></ion-img>
+  <form (ngSubmit)="loginApp(this.user)">
     <ion-item>
       <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
       <ion-input [(ngModel)]="user.email" name = 'email' type="text"></ion-input>

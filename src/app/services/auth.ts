@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase } from "@angular/fire/database";
+import { ionicStorage } from "./ionic-storage";
 import { User,newUser } from './interfaces';
 import { auth } from 'firebase/app';
 
@@ -8,10 +9,10 @@ import { auth } from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private fBase:AngularFireAuth, private fData:AngularFireDatabase) { }
+  constructor(private fBase:AngularFireAuth, private fData:AngularFireDatabase, private ionicS:ionicStorage) { }
   
   public loginApp(user:User):Promise<any>{
-    return  this.fBase.auth.signInWithEmailAndPassword(user.email, user.pass)
+    return  this.fBase.auth.signInWithEmailAndPassword(user.email, user.pass);
   }
   public signOut(){
     return this.fBase.auth.signOut()
