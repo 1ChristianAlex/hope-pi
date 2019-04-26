@@ -4,6 +4,7 @@ import { AuthService } from "../services/auth";
 import { auth } from "firebase/app";
 import { Router } from "@angular/router";
 import { UtilitsMetods } from "../services/utilits";
+import { ionicStorage } from "../services/ionic-storage";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { UtilitsMetods } from "../services/utilits";
 })
 export class LoginPage implements OnInit {
   
-  constructor(private authS:AuthService, private router:Router, private UtilitsMetods:UtilitsMetods) { }
+  constructor(private authS:AuthService, private router:Router, private UtilitsMetods:UtilitsMetods, private ionStorage:ionicStorage) { }
   
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
     email:'',
     pass:''
   };
+  private userInfo:User={};
   public loginApp(user:User){
     const verifyStringAcess = () =>{
       let canSign = [];
@@ -45,18 +47,22 @@ export class LoginPage implements OnInit {
       }
       return false;
     }
-
+    
     if (verifyStringAcess() == true) {
       this.authS.loginApp(user).then((response:auth.UserCredential)=>{
         if (response.user) {
-          this.router.navigate(['/app'])
+          this.authS.getUserInfo(response.user.uid).then(async response=>{
+            await this.ionStorage.setStorage("userLocalInfo", {...response});
+            this.router.navigate(['/app']);
+          })
         }
-      }).catch((err:auth.Error)=>{
+      })
+      .catch((err:auth.Error)=>{
         console.log(verifyStringAcess())
         console.log(err.message)
         this.UtilitsMetods.UtilitsMetods('Email ou senha invalidos')
       });
     }
-
+    
   }
 }

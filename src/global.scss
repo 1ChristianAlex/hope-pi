@@ -12,7 +12,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,900,900i');
 
 ///Color Variables 
-$headerFooter: #E76F51;
+$headerFooter: #00ccff;
 $titleColor: white;
 .tab-selected{
     color:#1e555c;
@@ -29,11 +29,11 @@ body{
     
 }
 ion-toolbar,ion-tab-bar{
-    --background: #E76F51;
+    --background: #00ccff;
     --color	:white;
 }
 ion-content.login-content{
-    --background: #E76F51;
+    --background: #00ccff;
     --padding-start:15px;
     --padding-end:15px;
     form{
@@ -43,11 +43,11 @@ ion-content.login-content{
         }
     }
     ion-button {
-        --background: #E9C46A;
+        --background: #92E26A;
         margin:15px 0;
     }
     ion-item{ 
-        --background:#E76F51;
+        --background:#00ccff;
         ion-input{
             
         }

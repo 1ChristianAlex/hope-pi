@@ -28,8 +28,8 @@ import { fireApi } from "./firebaseConf";
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicStorageModule.forRoot({
-      name: '__mydb',
-      driverOrder: ['indexeddb', 'sqlite', 'websql']
+      name: 'ionic_storage',
+      driverOrder: ['sqlite', 'indexeddb', 'websql']
     })
   ],
   providers: [

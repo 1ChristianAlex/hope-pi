@@ -14,8 +14,24 @@ export class AuthService {
   public loginApp(user:User):Promise<any>{
     return  this.fBase.auth.signInWithEmailAndPassword(user.email, user.pass);
   }
+  public getUserInfo(uid:string):Promise<User>{
+    return new Promise((res,rej)=>{
+      try {
+        this.fData.list(`users/${uid}`).snapshotChanges().subscribe(sub=>{
+          let result:User = {};
+          sub.map((map)=>{
+            return result[`${map.payload.key}`] = map.payload.val();
+          })
+          res(result);
+        })
+      } catch (error) {
+        rej(error);
+      }
+    })
+  }
   public signOut(){
-    return this.fBase.auth.signOut()
+    this.ionicS.clearStorage();
+    return this.fBase.auth.signOut();
   }
   public newUser(user:newUser){
     return this.fBase.auth.createUserWithEmailAndPassword(user.email, user.pass).then((userC:auth.UserCredential)=>{

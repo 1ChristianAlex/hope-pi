@@ -7,8 +7,9 @@ import { Storage } from "@ionic/storage";
 export class ionicStorage{
     constructor(private ionStorage:Storage){}
     
-    public setStorage(key:string, object:any){
-        return this.ionStorage.set(name, object);
+    public setStorage(key:string, object:object){
+        console.log(`${key} storaged`);
+        return this.ionStorage.set(key, ...object);
     }
     public getStorage(key:string){
         return this.ionStorage.get(key);
