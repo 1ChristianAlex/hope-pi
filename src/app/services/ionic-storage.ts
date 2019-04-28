@@ -9,7 +9,7 @@ export class ionicStorage{
     
     public setStorage(key:string, object:object){
         console.log(`${key} storaged`);
-        return this.ionStorage.set(key, ...object);
+        return this.ionStorage.set(key, {...object});
     }
     public getStorage(key:string){
         return this.ionStorage.get(key);

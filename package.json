@@ -37,6 +37,7 @@
     "core-js": "^2.5.4",
     "firebase": "^5.9.4",
     "rxjs": "~6.3.3",
+    "spotify-web-api-js": "^1.2.0",
     "tar": "^4.4.8",
     "zone.js": "~0.8.29"
   },

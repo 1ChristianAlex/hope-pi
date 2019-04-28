@@ -9,11 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpModule } from "@angular/http";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { IonicStorageModule } from "@ionic/storage";
+import SpotifyWebApi from 'spotify-web-api-js';
 
 import { fireApi } from "./firebaseConf";
 
@@ -30,12 +32,14 @@ import { fireApi } from "./firebaseConf";
     IonicStorageModule.forRoot({
       name: 'ionic_storage',
       driverOrder: ['sqlite', 'indexeddb', 'websql']
-    })
+    }),
+    HttpModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SpotifyWebApi
   ],
   
   bootstrap: [AppComponent]
