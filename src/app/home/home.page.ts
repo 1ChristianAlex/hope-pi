@@ -27,7 +27,8 @@ export class homePage implements OnInit{
   public configureBtnAlert(path:string){
     this.router.navigate(['/app/config/alertConfig'])
   }
-  clickFB(){
-    this.fb.getFiles();
+  public async clickFB(){
+   this.fb.getFiles();
+   
   }
 }

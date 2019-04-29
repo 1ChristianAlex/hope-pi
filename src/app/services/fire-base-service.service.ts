@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from "@angular/fire/database";
 import { AngularFireStorage } from "@angular/fire/storage";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class FireBaseServiceService {
-
+  
   constructor(private fBase:AngularFireDatabase, private fStorage:AngularFireStorage) { }
-
+  
   public async getTeste(){
     return await this.fBase.list('firebase').snapshotChanges();
   }
@@ -16,10 +17,21 @@ export class FireBaseServiceService {
     return await this.fBase.object('firebase').update({testez:{testea:123,firefromIonic:true}})
   }
   public async getFiles(){
-    let files = await this.fStorage.ref('articleFiles/Depressão - Corpo, Mente e Alma.pdf');
-    let a = files.getDownloadURL().toPromise()
-    let b = files.getMetadata().toPromise()
-
-    console.log(Promise.all([a,b]))
+    console.log('click')
+    let files= [];
+    await this.fBase.list('articles/articlesFiles').snapshotChanges().subscribe(item=>{
+      item.map(map=>{
+         files.push({
+           names:map.payload.val()
+         });
+      })
+    })
+    await files;
+    //let filesStorage = await this.fStorage.ref(`articleFiles/${files[0]}`).getMetadata().toPromise();
+    console.log(typeof files)
+    files.forEach(item=>{
+      console.log(item)
+    })
+    return files;
   }
 }
