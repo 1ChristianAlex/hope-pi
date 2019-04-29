@@ -47,24 +47,25 @@ export class SpotifyService{
         this.spotify.setAccessToken(token.access_token);
     })
 }
-public async serachTrack(){
+public async getAlbum(){
     
     await this.getToken();
-    let categorie= await this.spotify.getCategories({
-        limit:50
-    }).catch(err=>{
+    let album:SpotifyApi.SingleAlbumResponse = await this.spotify.getAlbum('35s58BRTGAEWztPo9WqCIs').
+    catch(err=>{
         if (err.status == 401) {
             this.refreshToken().then(()=>{
-                this.serachTrack();
+                this.getAlbum();
             })
         }
     })
-    console.log(categorie)
-    return categorie;
+
+    let returnAlbum = {
+        tracks:album.tracks.items,
+        albumName:album.name,
+        albumImage:album.images[1]
+    }
+    
+    return returnAlbum;
 }    
-public async serachTraack(){
-    await this.getToken();
-    let result = await this.spotify.getCategories({limit:10});
-    console.log(result)
-}
+
 }

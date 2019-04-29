@@ -18,12 +18,10 @@ export class homePage implements OnInit{
     
   }
   public valueBtnAlert:boolean = true;
-  private verifyAlertButon(){
+  private async verifyAlertButon(){
     
-    this.ionStorage.getStorage('userLocalInfo').then((resultStorage:User)=>{
-      this.valueBtnAlert = resultStorage.btnConfig;
-    })
-    
+    let userLocal:User =  await this.ionStorage.getStorage('userLocalInfo');
+    (userLocal)? this.valueBtnAlert = userLocal.btnConfig: true;
   }
   public configureBtnAlert(path:string){
     this.router.navigate(['/app/config/alertConfig'])

@@ -27,11 +27,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'podcast',
+        path: 'music',
         children: [
           {
             path: '',
-            loadChildren: '../podcast/podcast.module#podcastPageModule'
+            loadChildren: '../musics/music.module#musicPageModule'
           }
         ]
       },
