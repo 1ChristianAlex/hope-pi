@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { SpotifyService } from "../services/spotify-service";
-import SpotifyWebApi from 'spotify-web-api-js';
 
 @Component({
   selector: 'app-music',
@@ -14,6 +13,7 @@ export class musicPage implements OnInit{
   public musics:any = {
     tracks:[]
   };
+  
   private async getMusic(){
     this.musics = await this.spotify.getAlbum()
     console.log(this.musics)

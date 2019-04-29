@@ -4,7 +4,8 @@ import { ionicStorage } from "../services/ionic-storage";
 import { User } from "../services/interfaces";
 import { UtilitsMetods } from "../services/utilits";
 import { Router } from "@angular/router";
-import { SpotifyService } from "../services/spotify-service";
+
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { SpotifyService } from "../services/spotify-service";
 })
 export class homePage implements OnInit{
   constructor(public fb:FireBaseServiceService, private ionStorage:ionicStorage, private util:UtilitsMetods
-    , private router:Router, private spotify:SpotifyService){}
+    , private router:Router){}
   ngOnInit(){
     this.verifyAlertButon();
     
@@ -27,6 +28,6 @@ export class homePage implements OnInit{
     this.router.navigate(['/app/config/alertConfig'])
   }
   clickFB(){
-    this.spotify.serachTrack();
+    this.fb.getFiles();
   }
 }

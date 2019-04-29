@@ -8,19 +8,24 @@
 
 <ion-content class="music-content">
   
-  <ion-card *ngFor="let item of musics.tracks" (click)="openCardMusic(item)" id="{{item?.name}}" class="card-content">
-    <ion-thumbnail class="item-image">
+  <ion-card *ngFor="let track of musics.tracks" (click)="openCardMusic(track)" id="{{track?.name}}" class="card-content">
+    <ion-thumbnail class="track-image">
       <img [src]="musics?.albumImage.url">
     </ion-thumbnail>
     
     <ion-card-content class="card-music-content">
       <ion-text>
-        <h1>{{item?.name}}</h1>
+        <h1>{{track?.name}}</h1>
       </ion-text>
       <ion-text>
         <h2>{{musics?.albumName}}</h2>
       </ion-text>
-      <a href="">Mais</a>
+      <ion-text class="artists-name">
+        <span *ngFor="let artist of track.artists">{{artist?.name}}, </span>
+      </ion-text>
+      <ion-text class='open-spotify-link'>
+        <a target="_black" [href]="track?.external_urls.spotify">Escute no Spotify <img src="../../assets/spotify-logo.png" alt=""></a>
+      </ion-text>
     </ion-card-content>
   </ion-card>
 </ion-content>

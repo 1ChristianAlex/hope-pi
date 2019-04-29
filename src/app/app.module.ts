@@ -9,9 +9,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpModule } from "@angular/http";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { IonicStorageModule } from "@ionic/storage";
@@ -26,8 +29,10 @@ import { fireApi } from "./firebaseConf";
     BrowserModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
+    //BrowserAnimationsModule,
     AngularFireModule.initializeApp(fireApi),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     IonicStorageModule.forRoot({
       name: 'ionic_storage',
