@@ -50,7 +50,7 @@ export class SpotifyService{
 public async getAlbum(){
     
     await this.getToken();
-    let album:SpotifyApi.SingleAlbumResponse = await this.spotify.getAlbum('4Carzsnpd6yvuHZ49I0oz8').
+    let album:any  = await this.spotify.getAlbum('4Carzsnpd6yvuHZ49I0oz8').
     catch(err=>{
         if (err.status == 401) {
             this.refreshToken().then(()=>{
