@@ -16,22 +16,20 @@ export class FireBaseServiceService {
   public async getAgain(){
     return await this.fBase.object('firebase').update({testez:{testea:123,firefromIonic:true}})
   }
-  public async getFiles(){
-    console.log('click')
-    let files= [];
-    await this.fBase.list('articles/articlesFiles').snapshotChanges().subscribe(item=>{
-      item.map(map=>{
-         files.push({
-           names:map.payload.val()
-         });
-      })
+  public getFiles():Promise<any>{
+    return new Promise((res,rej)=>{
+      try {
+        let filesA = []
+        this.fBase.list('articles/articlesFiles').snapshotChanges().subscribe(item=>{
+          item.map((map)=>{
+            filesA.push(this.fStorage.ref(`articleFiles/${map.payload.val()}`).getMetadata())
+          })
+        });
+        res(filesA)
+      } catch (error) {
+        rej(error)
+      }
     })
-    await files;
-    //let filesStorage = await this.fStorage.ref(`articleFiles/${files[0]}`).getMetadata().toPromise();
-    console.log(typeof files)
-    files.forEach(item=>{
-      console.log(item)
-    })
-    return files;
+    
   }
 }
