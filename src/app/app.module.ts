@@ -11,22 +11,22 @@ import { AppComponent } from './app.component';
 
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpModule } from "@angular/http";
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
-import { AngularFireStorageModule } from "@angular/fire/storage";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { HttpModule } from '@angular/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { IonicStorageModule } from "@ionic/storage";
+import { IonicStorageModule } from '@ionic/storage';
 import SpotifyWebApi from 'spotify-web-api-js';
 
-import { fireApi } from "./firebaseConf";
+import { fireApi } from './firebaseConf';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     //BrowserAnimationsModule,
@@ -46,7 +46,7 @@ import { fireApi } from "./firebaseConf";
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SpotifyWebApi
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

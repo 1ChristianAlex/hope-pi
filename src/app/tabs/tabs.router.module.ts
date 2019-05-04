@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
-
 const routes: Routes = [
   {
     path: 'app',
@@ -52,12 +51,13 @@ const routes: Routes = [
             loadChildren: '../config/config.module#ConfigPageModule'
           },
           {
-            path:'alertConfig',
-            loadChildren:'../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
+            path: 'alertConfig',
+            loadChildren:
+              '../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
           }
         ]
       },
-    
+
       {
         path: '',
         redirectTo: '/app/home',
@@ -73,9 +73,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

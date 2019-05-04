@@ -11,139 +11,158 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,900,900i');
 
-///Color Variables 
+///Color Variables
 $headerFooter: #00ccff;
 $titleColor: white;
-.tab-selected{
-    color:#1e555c;
-    --ion-color-primary:#1e555c;
-    ion-icon{
-        color:#1e555c;
-        --ion-color-primary:#1e555c;
-    }
+.tab-selected {
+  color: #1e555c;
+  --ion-color-primary: #1e555c;
+  ion-icon {
+    color: #1e555c;
+    --ion-color-primary: #1e555c;
+  }
 }
 
+body {
+  font-family: 'Fira Sans', sans-serif !important;
+}
+ion-toolbar,
+ion-tab-bar {
+  --background: #00ccff;
+  --color: white;
+}
+ion-content.login-content {
+  --background: #00ccff;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  form {
+    border-radius: 5px;
+    ion-label {
+      --color: white;
+    }
+  }
+  ion-button {
+    --background: #ff6b99;
+    margin: 15px 0;
+  }
+  ion-item {
+    --border-color: white;
+    --background: #00ccff;
+    ion-label {
+      --color: white;
+    }
+    ion-input {
+    }
+  }
+}
+ion-content.login-content.sign-in {
+  .image {
+    ion-img {
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
+}
+ion-content.music-content {
+  .card-content {
+    .track-image {
+      float: left;
+      width: 35%;
+      margin: 0;
+      height: auto;
+      transition: 0.3s;
 
-body{
-    font-family: 'Fira Sans', sans-serif!important;
-    
-}
-ion-toolbar,ion-tab-bar{
-    --background: #00ccff;
-    --color	:white;
-}
-ion-content.login-content{
-    --background: #00ccff;
-    --padding-start:15px;
-    --padding-end:15px;
-    form{
-        border-radius: 5px;
-        ion-label{
-            --color:white;
-        }
+      .item-native {
+        padding: 0 !important;
+        padding-inline-start: 0;
+        -webkit-padding-start: unset !important;
+      }
     }
-    ion-button {
-        --background: #ff6b99;
-        margin:15px 0;
+    ion-card-content.card-music-content {
+      width: 65%;
+      float: right;
+      transition: 0.3s;
+      padding: 15px 15px;
+      h1 {
+        font-size: 12pt;
+      }
+      h2 {
+        font-size: 10pt;
+      }
+      .open-spotify-link {
+        display: inline-block;
+        margin: 10px 0;
+        img {
+          height: 50px;
+          width: auto;
+        }
+      }
+      .artists-name,
+      .open-spotify-link {
+        display: none;
+      }
     }
-    ion-item{ 
-        --border-color:white;
-        --background:#00ccff;
-        ion-label{
-            --color	:white;
-        }
-        ion-input{
-            
-        }
+  }
+  .card-content.opened {
+    .track-image {
+      float: unset;
+      width: 100%;
+      transition: 0.3s;
+      img {
+        width: 50%;
+        margin: 0 auto;
+        transition: 0.3s;
+      }
     }
-}
-ion-content.login-content.sign-in{
-    .image{
-        ion-img{
-            width: 40%;
-            margin: 0 auto;
-        }
-    }
-    
-}
-ion-content.music-content{
-    .card-content{
-        .track-image{
-            float: left;
-            width: 35%;
-            margin: 0;
-            height: auto;
-            transition: 0.3s;
-            
-            .item-native{
-                padding: 0!important;
-                padding-inline-start:0;
-                -webkit-padding-start:unset!important;
-            }
-        }
-        ion-card-content.card-music-content{
-            width: 65%;
+
+    ion-card-content.card-music-content {
+      width: 100%;
+      float: unset;
+      transition: 0.3s;
+      h1 {
+        font-size: 14pt;
+      }
+      h2 {
+        font-size: 12pt;
+      }
+      .artists-name,
+      .open-spotify-link {
+        display: block;
+        a {
+          display: block;
+          img {
+            height: 50px;
+            width: auto;
             float: right;
-            transition: 0.3s;
-            padding: 15px 15px;
-            h1{
-                font-size: 12pt;
-            }
-            h2{
-                font-size: 10pt;
-            }
-            .open-spotify-link {
-                display: inline-block;
-                margin: 10px 0;
-                img{
-                    height: 50px;
-                    width: auto;
-                }
-            }
-            .artists-name,
-            .open-spotify-link{
-                display: none;
-                
-            }
+            margin: -10px 0;
+          }
         }
-        
+      }
     }
-    .card-content.opened{
-        .track-image{
-            float: unset;
-            width: 100%;
-            transition: 0.3s;
-            img{
-                width: 50%;
-                margin: 0 auto;
-                transition: 0.3s;
-            }
-        }
-        
-        ion-card-content.card-music-content{
-            width: 100%;
-            float: unset;
-            transition: 0.3s;
-            h1{
-                font-size: 14pt;
-            }
-            h2{
-                font-size: 12pt;
-            }
-            .artists-name,
-            .open-spotify-link{
-                display: block;
-                a{
-                    display: block;
-                    img{
-                        height: 50px;
-                        width: auto;
-                        float: right;
-                        margin: -10px 0;
-                    }
-                }
-            }
-        }
+  }
+}
+ion-content.books-content {
+  .card-content {
+    a {
+      display: block;
     }
-    
+    ion-card-content.card-article-content {
+      width: 80%;
+      float: right;
+    }
+    .article-icon {
+      float: left;
+      width: 20%;
+      ion-icon {
+        width: 100%;
+        font-size: 26vw;
+        margin: 0;
+      }
+    }
+    h1 {
+      font-size: 15pt;
+      padding: 10px 0;
+      color: black;
+    }
+  }
 }
