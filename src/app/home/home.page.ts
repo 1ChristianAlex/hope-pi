@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FireBaseServiceService } from '../services/fire-base-service.service';
 import { ionicStorage } from '../services/ionic-storage';
 import { User } from '../services/interfaces';
-import { UtilitsMetods } from '../services/utilits';
 import { Router } from '@angular/router';
+import { IonicLoad } from '../services/ionLoading';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +13,8 @@ export class homePage implements OnInit {
   constructor(
     public fb: FireBaseServiceService,
     private ionStorage: ionicStorage,
-    private util: UtilitsMetods,
-    private router: Router
+    private router: Router,
+    private load: IonicLoad
   ) {}
   ngOnInit() {
     this.verifyAlertButon();
@@ -27,5 +27,7 @@ export class homePage implements OnInit {
   public configureBtnAlert(path: string) {
     this.router.navigate(['/app/config/alertConfig']);
   }
-  public async clickFB() {}
+  public async clickFB() {
+    this.load.openLoading();
+  }
 }
