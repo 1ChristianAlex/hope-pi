@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="single-news-content">
+  <ion-card>
+    <ion-img src="../../assets/slides/3.jpg"></ion-img>
+    <ion-card-header class="card-single-post-header">
+      <ion-card-title>{{ singleNews?.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="content-single-post">
+      <ion-card-subtitle>{{ singleNews?.subtitle }}</ion-card-subtitle>
+      <ion-text>
+        <p>{{ singleNews?.content }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

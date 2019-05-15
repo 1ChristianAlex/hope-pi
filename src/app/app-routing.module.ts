@@ -8,7 +8,8 @@ const routes: Routes = [
     loadChildren: './tabs/tabs.module#TabsPageModule'
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' }
+  { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' },  { path: 'single-news', loadChildren: './single-news/single-news.module#SingleNewsPageModule' }
+
 ];
 @NgModule({
   imports: [

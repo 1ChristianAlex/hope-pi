@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, Observer } from 'rxjs';
+import { Post } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,15 @@ export class FireBaseServiceService {
       .ref(`articleFiles/${name}`)
       .getDownloadURL()
       .toPromise();
+  }
+  public getNews(): Promise<Array<Post>> {
+    return new Promise((res, rej) => {
+      this.fBase
+        .list('News/posts')
+        .valueChanges()
+        .subscribe((item: Array<Post>) => {
+          res(item);
+        });
+    });
   }
 }

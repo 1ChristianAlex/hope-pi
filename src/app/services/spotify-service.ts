@@ -48,9 +48,7 @@ export class SpotifyService {
   }
   private async refreshToken(): Promise<any> {
     await this.http
-      .get(
-        'https://us-central1-una-projects.cloudfunctions.net/getSpotifyTokenF/'
-      )
+      .get('http://localhost:3000/')
       .toPromise()
       .then((response: any) => {
         let token: Token = JSON.parse(response._body);
@@ -65,7 +63,7 @@ export class SpotifyService {
   public async getAlbum() {
     await this.getToken();
     let album: any = await this.spotify
-      .getAlbum('4Carzsnpd6yvuHZ49I0oz8')
+      .getAlbum('78guAsers0klWl6RwzgDLd')
       .catch(err => {
         if (err.status == 401) {
           this.refreshToken().then(() => {

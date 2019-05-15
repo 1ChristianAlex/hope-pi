@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev-serve": "node ./backendApi/server"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +37,9 @@
     "cordova-sqlite-storage": "3.2.0",
     "cordova-universal-links-plugin": "1.2.1",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "firebase": "^5.9.4",
+    "request": "^2.88.0",
     "rxjs": "~6.3.3",
     "spotify-web-api-js": "^1.2.0",
     "tar": "^4.4.8",

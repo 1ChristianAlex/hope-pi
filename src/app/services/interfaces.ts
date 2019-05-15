@@ -36,3 +36,13 @@ export interface docFile {
   contentType: string;
   img: string | boolean;
 }
+export interface Post {
+  content?: string;
+  ref?: string;
+  subtitle?: string;
+  thumb?: string;
+  title?: string;
+}
+export interface News {
+  posts: Array<Post>;
+}

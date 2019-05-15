@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FireBaseServiceService } from '../services/fire-base-service.service';
 import { ionicStorage } from '../services/ionic-storage';
-import { User } from '../services/interfaces';
+import { User, Post, News } from '../services/interfaces';
 import { Router } from '@angular/router';
 import { IonicLoad } from '../services/ionLoading';
 
@@ -17,17 +17,24 @@ export class homePage implements OnInit {
     private load: IonicLoad
   ) {}
   ngOnInit() {
-    this.verifyAlertButon();
+    //    this.verifyAlertButon();
+    this.getNews();
   }
   public valueBtnAlert: boolean = true;
+  public newsHome: Array<Post> = [];
   private async verifyAlertButon() {
     let userLocal: User = await this.ionStorage.getStorage('userLocalInfo');
     userLocal ? (this.valueBtnAlert = userLocal.btnConfig) : true;
   }
-  public configureBtnAlert(path: string) {
-    this.router.navigate(['/app/config/alertConfig']);
+  public async getNews() {
+    await this.load.openLoading();
+    let news = await this.fb.getNews();
+    this.newsHome = news;
+    await this.load.closeLoading();
   }
-  public async clickFB() {
-    this.load.openLoading();
+  public openNews(news: News) {
+    this.router.navigate(['app/home/singleNews'], {
+      queryParams: news
+    });
   }
 }

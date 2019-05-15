@@ -63,6 +63,39 @@ ion-content.login-content.sign-in {
     }
   }
 }
+ion-content.home-content {
+  .ion-card-home {
+    .card-home-header {
+      width: 70%;
+      float: right;
+      ion-card-title {
+        font-size: 12pt;
+      }
+      ion-card-subtitle {
+        font-size: 8pt;
+      }
+    }
+    .content-home {
+      width: 30%;
+      float: left;
+      .bg-image {
+        background-color: #00ccff;
+      }
+    }
+  }
+}
+ion-content.single-news-content {
+  .card-single-post-header {
+    ion-card-title {
+      font-size: 13pt;
+    }
+  }
+  .content-single-post {
+    .ion-card-subtitle {
+      font-size: 10pt;
+    }
+  }
+}
 ion-content.music-content {
   .card-content {
     .track-image {

@@ -13,6 +13,11 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../home/home.module#homePageModule'
+          },
+          {
+            path: 'singleNews',
+            loadChildren:
+              '../single-news/single-news.module#SingleNewsPageModule'
           }
         ]
       },
