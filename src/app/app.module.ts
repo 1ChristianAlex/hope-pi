@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from '@angular/fire';
@@ -18,8 +18,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { IonicStorageModule } from '@ionic/storage';
-import SpotifyWebApi from 'spotify-web-api-js';
-
+import { MainAppButtonModule } from './main-app-button/main-app-button.module';
 import { fireApi } from './firebaseConf';
 
 @NgModule({
@@ -29,7 +28,7 @@ import { fireApi } from './firebaseConf';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    //BrowserAnimationsModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(fireApi),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
@@ -43,10 +42,8 @@ import { fireApi } from './firebaseConf';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SpotifyWebApi
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule {}

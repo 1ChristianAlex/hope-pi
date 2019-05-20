@@ -1,26 +1,29 @@
+<section class="main-content-btn" [@toggleBox]='toggleMainBox'>
+
+</section>
 <ion-tabs>
-  
+
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
       <ion-icon name="home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="music">
-        <ion-icon name="play"></ion-icon>
-        <ion-label>Musicas</ion-label>
-      </ion-tab-button>
-    <ion-tab-button tab="alertPage">
+      <ion-icon name="play"></ion-icon>
+      <ion-label>Musicas</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="toggleBox()">
       <ion-icon name="happy"></ion-icon>
       <ion-label>*</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="books">
-        <ion-icon name="book"></ion-icon>
-        <ion-label>Livros</ion-label>
-      </ion-tab-button>
+      <ion-icon name="book"></ion-icon>
+      <ion-label>Livros</ion-label>
+    </ion-tab-button>
     <ion-tab-button tab="config">
       <ion-icon name="cog"></ion-icon>
       <ion-label>Config</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-  
+
 </ion-tabs>

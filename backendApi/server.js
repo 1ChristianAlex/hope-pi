@@ -1,7 +1,9 @@
 const request = require('request');
 const express = require('express');
-
+const ip = require('./network');
 const app = express();
+
+const host = 'localhost' | ip;
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
@@ -45,6 +47,9 @@ app.get('/', (req, resF, next) => {
       resF.json(err);
     });
 });
-app.listen(3000, 'localhost', () => {
+app.get('/teste', (req, res, next) => {
+  res.json(req.ip);
+});
+app.listen(3000, host, () => {
   console.log('Listesing on port 3000');
 });
