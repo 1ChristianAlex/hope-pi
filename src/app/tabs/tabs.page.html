@@ -1,8 +1,40 @@
-<section class="main-content-btn" [@toggleBox]='toggleMainBox'>
-
+<section
+  class="main-content-btn"
+  [@toggleBox]="toggleMainBox ? 'OpendBox' : 'cloesedBox'"
+>
+  <ion-card class="card-mainBox">
+    <ion-card-header>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="3" *ngIf="userLocal.photoURL == 'defaultPhoto'">
+          </ion-col>
+          <ion-col size="9">
+            <ion-text>
+              <span>"Teste" - Fulano da Silva</span>
+            </ion-text></ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+            <ion-icon name="cloudy-night"></ion-icon>
+          </ion-col>
+          <ion-col size="4">
+            <ion-icon name="cloudy-night"></ion-icon>
+          </ion-col>
+          <ion-col size="4">
+            <ion-icon name="cloudy-night"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </section>
-<ion-tabs>
 
+<ion-tabs>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
       <ion-icon name="home"></ion-icon>
@@ -25,5 +57,4 @@
       <ion-label>Config</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>
