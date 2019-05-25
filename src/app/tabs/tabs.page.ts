@@ -7,6 +7,8 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { UtilitsMetods } from '../services/utilits';
+import { FireBaseServiceService } from '../services/fire-base-service.service';
 
 @Component({
   selector: 'app-tabs',
@@ -42,13 +44,21 @@ import {
   ]
 })
 export class TabsPage implements OnInit {
-  constructor(private ioStorage: ionicStorage) {}
+  constructor(
+    private ioStorage: ionicStorage,
+    private util: UtilitsMetods,
+    private fb: FireBaseServiceService
+  ) {}
 
   ngOnInit() {
     this.getUser();
+    this.getPhraseTab();
   }
   public toggleMainBox: boolean = false;
   public userLocal = {};
+  public BoxHelpItem = this.getBoxHelp();
+  public phraseTab: any = '';
+
   public toggleBox() {
     this.toggleMainBox = !this.toggleMainBox;
   }
@@ -61,6 +71,24 @@ export class TabsPage implements OnInit {
       lastname,
       photoURL
     };
-    console.log(this.userLocal);
+  }
+  private getBoxHelp() {
+    let arrUrl = [
+      { name: 'Desacelera', url: 'https://www.eurekka.me/desacelera.html' },
+      { name: 'Durmazen', url: 'https://www.eurekka.me/durmazen.html' },
+      { name: 'Não Esquenta', url: 'https://www.eurekka.me/naoesquenta.html' }
+    ];
+    return arrUrl;
+  }
+  public goBoxHelp(boxitem: any) {
+    window.open(boxitem.url, '_blank');
+  }
+  public navWhatHappened() {
+    this.toggleBox();
+    this.util.navigateRouter('what-happened', false);
+  }
+  public async getPhraseTab() {
+    let phrase = await this.fb.getRandomPhrase();
+    this.phraseTab = phrase;
   }
 }

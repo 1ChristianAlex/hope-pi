@@ -67,4 +67,15 @@ export class FireBaseServiceService {
         });
     });
   }
+  public getRandomPhrase() {
+    return new Promise((res, rej) => {
+      this.fBase
+        .list('MotivacialPhrases')
+        .valueChanges()
+        .forEach(phrase => {
+          let random = Math.floor(Math.random() * phrase.length);
+          res(phrase[random]);
+        });
+    });
+  }
 }

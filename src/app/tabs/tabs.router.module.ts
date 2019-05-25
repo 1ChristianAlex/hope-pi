@@ -62,6 +62,21 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'what-happened',
+        children: [
+          {
+            path: '',
+            loadChildren:
+              '../what-happened/what-happened.module#WhatHappenedPageModule'
+          },
+          {
+            path: 'alertConfig',
+            loadChildren:
+              '../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
+          }
+        ]
+      },
 
       {
         path: '',

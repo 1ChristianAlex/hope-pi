@@ -19,9 +19,11 @@ export class homePage implements OnInit {
   ngOnInit() {
     //    this.verifyAlertButon();
     this.getNews();
+    this.getPhraseHome();
   }
   public valueBtnAlert: boolean = true;
   public newsHome: Array<Post> = [];
+  public phrase: any = '';
   private async verifyAlertButon() {
     let userLocal: User = await this.ionStorage.getStorage('userLocalInfo');
     userLocal ? (this.valueBtnAlert = userLocal.btnConfig) : true;
@@ -36,5 +38,9 @@ export class homePage implements OnInit {
     this.router.navigate(['app/home/singleNews'], {
       queryParams: news
     });
+  }
+  public async getPhraseHome() {
+    let phrase = await this.fb.getRandomPhrase();
+    this.phrase = phrase;
   }
 }

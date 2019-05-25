@@ -203,6 +203,64 @@ section.main-content-btn {
   width: 100%;
   height: fit-content;
   .card-mainBox {
+    position: relative;
     background-color: white;
+    .close-arrow-box {
+      position: absolute;
+      --background: transparent;
+      --color: #00ccff;
+      --border-radius: none;
+      --box-shadow: none;
+      right: 5px;
+      top: 5px;
+      z-index: 99;
+    }
+    .phraseTab {
+      font-style: italic;
+    }
+    .icon-no-img {
+      text-align: center;
+      font-size: 26pt;
+    }
+    h1.user-name-main-box {
+      font-size: 15pt;
+      text-align: center;
+      margin: 0;
+      padding: 10px 0;
+    }
+    .boxItem-content {
+      text-align: center;
+      font-size: 11pt;
+      .btn-boxItem {
+        --background: #ff6b99;
+        --border-radius: 50%;
+        --border-color: #00ccff;
+        --padding-top: 17px;
+        --padding-bottom: 17px;
+        width: 65px;
+        height: 65px;
+        .icon-boxItem {
+          font-size: 23pt;
+        }
+      }
+    }
+    ion-col.main-box-what-happened {
+      text-align: center;
+      .btn-box-what-happened {
+        --background: #ff6b99;
+        --border-radius: 50%;
+        --border-color: #00ccff;
+        --padding-top: 17px;
+        --padding-bottom: 17px;
+        width: 65px;
+        height: 65px;
+        .happend-icon {
+          font-size: 23pt;
+        }
+        .happend-text {
+          color: black;
+        }
+      }
+    }
   }
 }

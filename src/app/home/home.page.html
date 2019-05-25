@@ -19,11 +19,15 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-card
-    *ngFor="let post of newsHome"
-    class="ion-card-home"
-    (click)="openNews(post)"
-  >
+  <section class="mPhrase">
+    <ion-card>
+      <ion-card-content>
+        {{phrase}}
+      </ion-card-content>
+    </ion-card>
+  </section>
+
+  <ion-card *ngFor="let post of newsHome" class="ion-card-home" (click)="openNews(post)">
     <ion-card-header class="card-home-header">
       <ion-card-subtitle>{{ post?.subtitle }}</ion-card-subtitle>
       <ion-card-title>{{ post?.title }}</ion-card-title>

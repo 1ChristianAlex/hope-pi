@@ -19,8 +19,12 @@ export class UtilitsMetods {
     });
     toast.present();
   }
-  public navigateRouter(path: string) {
-    let url = new URL(location.href);
-    this.router.navigate([`${url.pathname}/${path}`]);
+  public navigateRouter(path: string, continuos = true) {
+    if (continuos == true) {
+      let url = new URL(location.href);
+      this.router.navigate([`${url.pathname}/${path}`]);
+    } else {
+      this.router.navigate([`/app/${path}`]);
+    }
   }
 }

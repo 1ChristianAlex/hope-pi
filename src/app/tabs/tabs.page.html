@@ -1,35 +1,65 @@
-<section
-  class="main-content-btn"
-  [@toggleBox]="toggleMainBox ? 'OpendBox' : 'cloesedBox'"
->
+<section class="main-content-btn" [@toggleBox]="toggleMainBox ? 'OpendBox' : 'cloesedBox'">
   <ion-card class="card-mainBox">
+    <ion-button (click)="toggleBox()" class="close-arrow-box">
+      <ion-icon slot="icon-only" name="arrow-down"></ion-icon>
+    </ion-button>
     <ion-card-header>
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="3" *ngIf="userLocal.photoURL == 'defaultPhoto'">
-          </ion-col>
-          <ion-col size="9">
+          <ng-container *ngIf="userLocal.photoURL == 'defaultPhoto'; else elseTemplate">
+            <ion-col size="2" class="icon-no-img">
+              <ion-icon name="person"></ion-icon>
+            </ion-col>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <ion-col size="2">
+              <ion-img [src]="userLocal.photoURL"></ion-img>
+            </ion-col>
+          </ng-template>
+          <ion-col size="10">
             <ion-text>
-              <span>"Teste" - Fulano da Silva</span>
-            </ion-text></ion-col
-          >
+              <h1 class="user-name-main-box">
+                {{userLocal.name}} {{userLocal.lastname}}
+              </h1>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="phraseTab">
+            <ion-text>
+              <span>
+                " {{phraseTab}} "
+              </span>
+            </ion-text>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-header>
     <ion-card-content>
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="4">
-            <ion-icon name="cloudy-night"></ion-icon>
+          <ion-col size="4" *ngFor="let boxItem of BoxHelpItem" class="boxItem-content">
+            <ion-button (click)="goBoxHelp(boxItem)" class="btn-boxItem">
+              <div class="icon-boxItem">
+                <ion-icon name="cloudy-night"></ion-icon>
+              </div>
+            </ion-button>
+            <span>{{boxItem.name}}</span>
           </ion-col>
-          <ion-col size="4">
-            <ion-icon name="cloudy-night"></ion-icon>
-          </ion-col>
-          <ion-col size="4">
-            <ion-icon name="cloudy-night"></ion-icon>
+          <ion-col size="12" class="main-box-what-happened">
+            <ion-button (click)="navWhatHappened()" class="btn-box-what-happened">
+              <div class="happend-icon">
+                <ion-icon name="happy"></ion-icon>
+              </div>
+            </ion-button>
+            <div class="happend-text">
+              <h2>O que aconteceu?</h2>
+            </div>
           </ion-col>
         </ion-row>
+
       </ion-grid>
+
     </ion-card-content>
   </ion-card>
 </section>
@@ -45,8 +75,8 @@
       <ion-label>Musicas</ion-label>
     </ion-tab-button>
     <ion-tab-button (click)="toggleBox()">
-      <ion-icon name="happy"></ion-icon>
-      <ion-label>*</ion-label>
+      <ion-img src="../../assets/png_branco_transparente.png"></ion-img>
+      <!-- <ion-label>*</ion-label> -->
     </ion-tab-button>
     <ion-tab-button tab="books">
       <ion-icon name="book"></ion-icon>

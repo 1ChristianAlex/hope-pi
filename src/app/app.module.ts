@@ -18,7 +18,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { MainAppButtonModule } from './main-app-button/main-app-button.module';
 import { fireApi } from './firebaseConf';
 
 @NgModule({
