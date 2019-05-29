@@ -1,9 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>WhatHappened</ion-title>
+    <ion-title>O que aconteceu?</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="what-happened-content">
+  <ion-text class="top-askname-text">
+    <h1>{{userName.name}}, como você se sente?</h1>
+  </ion-text>
+  <form (ngSubmit)="onSubmit()">
+    <ion-item class="item-emotion image-selection">
+      <ion-label>Como você está agora?</ion-label>
+      <div class="img-emotion" *ngFor="let emotion of emotionsImage">
+        <div class="img-emotion-item" id="{{emotion.type}}" (click)="setEmotionType(emotion.type)">
+          <ion-img [src]="emotion.path"></ion-img>
+          <span>
+            {{emotion.type}}
+          </span>
+        </div>
+      </div>
+    </ion-item>
+    <ion-text class="top-askname-text">
+      <h1>{{userName.name}}, suas emoções?</h1>
+    </ion-text>
+    <ion-item class="item-emotion emotion-selection" *ngFor="let checkEmotion of checkBoxEmotion"
+      id="{{checkEmotion.type}}" (click)="setBoxEmotion(checkEmotion.type)">
+      <ion-checkbox value='{{checkEmotion.type}}'></ion-checkbox>
+      <ion-label>{{checkEmotion.name}}</ion-label>
+    </ion-item>
+    <ion-text class="top-askname-text">
+      <h1>{{userName.name}}, qual foi a situação?</h1>
+    </ion-text>
+    <ion-item class="item-emotion situation-text-area">
+      <ion-label position="floating">Sitação</ion-label>
+      <ion-textarea [(ngModel)]="userCaseModal.situation" name='situation'></ion-textarea>
+    </ion-item>
+    <ion-text class="top-askname-text">
+      <h1>{{userName.name}}, quais pensamentos você teve?</h1>
+    </ion-text>
+    <ion-item class="item-emotion situation-text-area">
+      <ion-label position="floating">Pensamentos</ion-label>
+      <ion-textarea [(ngModel)]="userCaseModal.thoughts" name='thoughts'></ion-textarea>
+    </ion-item>
+    <ion-text class="top-askname-text">
+      <h1>{{userName.name}}, quais ações você tomou?</h1>
+    </ion-text>
+    <ion-item class="item-emotion situation-text-area">
+      <ion-label position="floating">Ações</ion-label>
+      <ion-textarea [(ngModel)]="userCaseModal.action" name='action'></ion-textarea>
+    </ion-item>
+    <ion-item button (click)="getUserCase()">
+      <ion-label>Click me</ion-label>
+    </ion-item>
+  </form>
 </ion-content>

@@ -23,7 +23,7 @@ export class SpotifyService {
         storageToken.isOn == undefined
       ) {
         let tokenResponse: any = await this.http
-          .get('http://localhost:3000/')
+          .get('http://localhost:3000/spotify')
           .toPromise();
         let token: Token = JSON.parse(tokenResponse._body);
         console.log('from api');
@@ -46,7 +46,7 @@ export class SpotifyService {
   }
   private async refreshToken(): Promise<any> {
     await this.http
-      .get('http://localhost:3000/')
+      .get('http://localhost:3000/spotify')
       .toPromise()
       .then((response: any) => {
         let token: Token = JSON.parse(response._body);
@@ -58,14 +58,16 @@ export class SpotifyService {
         this.spotify.setAccessToken(token.access_token);
       });
   }
-  public async getAlbum() {
-    await this.getToken();
+  public async getAlbum(hasToken = false) {
+    if (hasToken == false) {
+      await this.getToken();
+    }
     let album: any = await this.spotify
       .getAlbum('06IKD4hvarANlm2BJMzsSq')
       .catch(err => {
         if (err.status == 401) {
           this.refreshToken().then(() => {
-            this.getAlbum();
+            this.getAlbum(true);
           });
         }
       });

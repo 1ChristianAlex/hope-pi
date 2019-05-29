@@ -264,3 +264,30 @@ section.main-content-btn {
     }
   }
 }
+ion-content.what-happened-content {
+  ion-text.top-askname-text h1 {
+    font-size: 12pt;
+    text-align: center;
+  }
+  .item-emotion {
+    margin: 15px 0;
+    ion-textarea {
+      --min-height: 150px;
+    }
+  }
+  .image-selection {
+    .img-emotion-item {
+      width: 100%;
+      text-align: center;
+      ion-img {
+        padding: 10px;
+      }
+    }
+  }
+  .emotion-selection {
+    margin: 0;
+    ion-label {
+      margin: 10px;
+    }
+  }
+}

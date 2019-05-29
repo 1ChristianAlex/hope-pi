@@ -46,3 +46,10 @@ export interface Post {
 export interface News {
   posts: Array<Post>;
 }
+export interface userCaseForm {
+  feeling?: string;
+  emotion?: string[];
+  situation?: string;
+  thoughts?: string;
+  action?: string;
+}
