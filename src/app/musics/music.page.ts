@@ -11,6 +11,7 @@ export class musicPage implements OnInit {
   ngOnInit() {
     this.getMusic();
   }
+
   public musics: any = {
     tracks: []
   };
@@ -19,6 +20,7 @@ export class musicPage implements OnInit {
     await this.load.openLoading();
     this.musics = await this.spotify.getAlbum();
     console.log(this.musics);
+
     await this.load.closeLoading();
   }
   public openCardMusic(track: SpotifyApi.TrackObjectSimplified) {

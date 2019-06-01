@@ -51,8 +51,6 @@ ion-content.login-content {
     ion-label {
       --color: white;
     }
-    ion-input {
-    }
   }
 }
 ion-content.login-content.sign-in {
@@ -289,5 +287,9 @@ ion-content.what-happened-content {
     ion-label {
       margin: 10px;
     }
+  }
+  .send-what-container {
+    width: fit-content;
+    margin: 0 auto;
   }
 }

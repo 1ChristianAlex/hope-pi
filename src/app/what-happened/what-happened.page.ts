@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ionicStorage } from '../services/ionic-storage';
 import { userCaseForm } from '../services/interfaces';
 import { UtilitsMetods } from '../services/utilits';
+import { FireBaseServiceService } from '../services/fire-base-service.service';
 
 @Component({
   selector: 'app-what-happened',
   templateUrl: './what-happened.page.html'
 })
 export class WhatHappenedPage implements OnInit {
-  constructor(private ionicSto: ionicStorage, private util: UtilitsMetods) {}
+  constructor(
+    private ionicSto: ionicStorage,
+    private util: UtilitsMetods,
+    private fb: FireBaseServiceService
+  ) {}
 
   ngOnInit() {
     this.getUserName();
@@ -45,25 +50,38 @@ export class WhatHappenedPage implements OnInit {
       name,
       lastname
     };
-    console.log(this.userName);
   }
   public setEmotionType(feeling) {
     this.userCaseModal.feeling = feeling;
-    console.log(this.userCaseModal);
   }
   public setBoxEmotion(emotion) {
-    this.userCaseModal.emotion.push(emotion);
-    console.log(this.userCaseModal);
+    if (!this.userCaseModal.emotion.includes(emotion)) {
+      this.userCaseModal.emotion.push(emotion);
+    } else {
+      let newEmotion = this.userCaseModal.emotion.filter(emo => {
+        if (emo != emotion) {
+          return emo;
+        }
+      });
+      this.userCaseModal.emotion = newEmotion;
+    }
   }
-  public getUserCase() {
-    console.log(this.userCaseModal);
-    this.userCaseModal = {
-      feeling: '',
-      emotion: [],
-      situation: '',
-      thoughts: '',
-      action: ''
-    };
+  public async getUserCase() {
+    let { emotion, feeling } = this.userCaseModal;
+    await this.sendSituation();
     this.util.navigateRouter('home', false);
+    if (emotion.length > 0 && feeling != '') {
+      this.userCaseModal = {
+        feeling: '',
+        emotion: [],
+        situation: '',
+        thoughts: '',
+        action: ''
+      };
+    }
+  }
+  private async sendSituation() {
+    let { uid } = await this.ionicSto.getStorage('userLocalInfo');
+    this.fb.sendUserDataSitualtion(this.userCaseModal, uid);
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable, Observer } from 'rxjs';
-import { Post } from './interfaces';
+import { Post, userCaseForm } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,6 @@ export class FireBaseServiceService {
     private fBase: AngularFireDatabase,
     private fStorage: AngularFireStorage
   ) {}
-
-  public async getTeste() {
-    return await this.fBase.list('firebase').snapshotChanges();
-  }
   public async getAgain() {
     return await this.fBase
       .object('firebase')
@@ -74,8 +70,18 @@ export class FireBaseServiceService {
         .valueChanges()
         .forEach(phrase => {
           let random = Math.floor(Math.random() * phrase.length);
+
           res(phrase[random]);
         });
     });
+  }
+  public sendUserDataSitualtion(userSituaiton: userCaseForm, uid: string) {
+    let date = new Date();
+    this.fBase
+      .list(
+        `users/${uid}/${date.getDate()}-${date.getMonth() +
+          1}-${date.getFullYear()}}`
+      )
+      .push(userSituaiton);
   }
 }

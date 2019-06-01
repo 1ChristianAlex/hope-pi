@@ -17,29 +17,22 @@ export class SpotifyService {
       let storageToken: storageToken = await this.ionStorage.getStorage(
         'spotifyToken'
       );
-      if (
-        storageToken == null ||
-        storageToken.isOn == null ||
-        storageToken.isOn == undefined
-      ) {
-        let tokenResponse: any = await this.http
-          .get('http://localhost:3000/spotify')
-          .toPromise();
-        let token: Token = JSON.parse(tokenResponse._body);
-        console.log('from api');
-        this.ionStorage.setStorage('spotifyToken', {
-          token: token,
-          isOn: true
-        });
-        this.spotify.setAccessToken(token.access_token);
-        this.spotify.setPromiseImplementation(Q);
-        return this.spotify;
-      } else {
-        console.log('from storage');
-        this.spotify.setAccessToken(storageToken.token.access_token);
-        this.spotify.setPromiseImplementation(Q);
-        return this.spotify;
-      }
+
+      let tokenResponse: any = await this.http
+        .get('http://localhost:3000/spotify')
+        .toPromise();
+      let token: Token = JSON.parse(tokenResponse._body);
+
+      // this.ionStorage.setStorage('spotifyToken', {
+      //   token: token,
+      //   isOn: true
+      // });
+      // this.spotify.setAccessToken(token.access_token);
+      // this.spotify.setPromiseImplementation(Q);
+      // return this.spotify;
+      this.spotify.setAccessToken(storageToken.token.access_token);
+      this.spotify.setPromiseImplementation(Q);
+      return this.spotify;
     } catch (error) {
       return error;
     }
@@ -52,7 +45,7 @@ export class SpotifyService {
         let token: Token = JSON.parse(response._body);
         console.log('refresh token');
         this.ionStorage.setStorage('spotifyToken', {
-          token: token,
+          token,
           isOn: true
         });
         this.spotify.setAccessToken(token.access_token);
@@ -65,11 +58,7 @@ export class SpotifyService {
     let album: any = await this.spotify
       .getAlbum('06IKD4hvarANlm2BJMzsSq')
       .catch(err => {
-        if (err.status == 401) {
-          this.refreshToken().then(() => {
-            this.getAlbum(true);
-          });
-        }
+        console.log(err);
       });
 
     let returnAlbum = {

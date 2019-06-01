@@ -49,8 +49,12 @@
       <ion-label position="floating">Ações</ion-label>
       <ion-textarea [(ngModel)]="userCaseModal.action" name='action'></ion-textarea>
     </ion-item>
-    <ion-item button (click)="getUserCase()">
-      <ion-label>Click me</ion-label>
-    </ion-item>
+
+    <div class="send-what-container">
+      <ion-button class="btn-send-what" (click)="getUserCase()">
+        Click me
+      </ion-button>
+    </div>
+
   </form>
 </ion-content>
