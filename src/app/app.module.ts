@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SideSearchComponent } from './side-search/side-search.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

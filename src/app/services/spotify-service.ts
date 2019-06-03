@@ -14,9 +14,9 @@ export class SpotifyService {
 
   private async getToken() {
     try {
-      let storageToken: storageToken = await this.ionStorage.getStorage(
-        'spotifyToken'
-      );
+      // let storageToken: storageToken = await this.ionStorage.getStorage(
+      //   'spotifyToken'
+      // );
 
       let tokenResponse: any = await this.http
         .get('http://localhost:3000/spotify')
@@ -30,8 +30,9 @@ export class SpotifyService {
       // this.spotify.setAccessToken(token.access_token);
       // this.spotify.setPromiseImplementation(Q);
       // return this.spotify;
-      this.spotify.setAccessToken(storageToken.token.access_token);
+      this.spotify.setAccessToken(token.access_token);
       this.spotify.setPromiseImplementation(Q);
+
       return this.spotify;
     } catch (error) {
       return error;
@@ -51,10 +52,9 @@ export class SpotifyService {
         this.spotify.setAccessToken(token.access_token);
       });
   }
-  public async getAlbum(hasToken = false) {
-    if (hasToken == false) {
-      await this.getToken();
-    }
+  public async getAlbum() {
+    await this.getToken();
+
     let album: any = await this.spotify
       .getAlbum('06IKD4hvarANlm2BJMzsSq')
       .catch(err => {

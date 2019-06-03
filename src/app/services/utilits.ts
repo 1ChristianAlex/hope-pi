@@ -19,6 +19,7 @@ export class UtilitsMetods {
     });
     toast.present();
   }
+
   public navigateRouter(path: string, continuos = true) {
     if (continuos == true) {
       let url = new URL(location.href);

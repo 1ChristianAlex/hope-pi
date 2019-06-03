@@ -16,6 +16,14 @@ export class IonicLoad {
     const load = await loading;
     return load.present();
   }
+  public async tostMensage(message) {
+    const toast = await this.ionLoad.create({
+      message,
+      duration: 2000,
+      spinner: 'dots',
+      cssClass: 'ionic-message-pos-report'
+    });
+  }
   public closeLoading() {
     return this.ionLoad.dismiss();
   }

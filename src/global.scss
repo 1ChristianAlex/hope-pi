@@ -281,6 +281,10 @@ ion-content.what-happened-content {
         padding: 10px;
       }
     }
+    .active-emotion {
+      border: 1px solid $headerFooter;
+      transition: 0.3s;
+    }
   }
   .emotion-selection {
     margin: 0;

@@ -53,6 +53,10 @@ export class WhatHappenedPage implements OnInit {
   }
   public setEmotionType(feeling) {
     this.userCaseModal.feeling = feeling;
+    document.querySelectorAll('.img-emotion-item').forEach(item => {
+      item.classList.remove('active-emotion');
+    });
+    document.getElementById(feeling).classList.add('active-emotion');
   }
   public setBoxEmotion(emotion) {
     if (!this.userCaseModal.emotion.includes(emotion)) {
@@ -84,4 +88,5 @@ export class WhatHappenedPage implements OnInit {
     let { uid } = await this.ionicSto.getStorage('userLocalInfo');
     this.fb.sendUserDataSitualtion(this.userCaseModal, uid);
   }
+  private getMenssage;
 }
