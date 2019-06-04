@@ -197,6 +197,20 @@ ion-content.books-content {
     }
   }
 }
+.menu-content-icon {
+  position: absolute;
+  z-index: 999;
+  right: 5px;
+  top: 5px;
+
+  ion-button#menu-icon-top {
+    --background: transparent;
+    --border-color: none;
+    --border-radius: none;
+    --box-shadow: none;
+  }
+}
+
 section.main-content-btn {
   width: 100%;
   height: fit-content;

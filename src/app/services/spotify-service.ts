@@ -19,7 +19,7 @@ export class SpotifyService {
       // );
 
       let tokenResponse: any = await this.http
-        .get('http://localhost:3000/spotify')
+        .get('http://192.168.10.122:3000/spotify')
         .toPromise();
       let token: Token = JSON.parse(tokenResponse._body);
 
@@ -40,7 +40,7 @@ export class SpotifyService {
   }
   private async refreshToken(): Promise<any> {
     await this.http
-      .get('http://localhost:3000/spotify')
+      .get('http://192.168.10.122:3000/spotify')
       .toPromise()
       .then((response: any) => {
         let token: Token = JSON.parse(response._body);

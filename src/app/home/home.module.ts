@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { homePage } from './home.page';
-import { SideSearchComponent } from '../side-search/side-search.component';
 
 @NgModule({
   imports: [
@@ -13,6 +12,6 @@ import { SideSearchComponent } from '../side-search/side-search.component';
     FormsModule,
     RouterModule.forChild([{ path: '', component: homePage }])
   ],
-  declarations: [homePage, SideSearchComponent]
+  declarations: [homePage]
 })
 export class homePageModule {}

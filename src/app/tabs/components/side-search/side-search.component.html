@@ -1,0 +1,16 @@
+<div class="menu-content-icon">
+  <ion-button (click)="toggleMenuE()" id="menu-icon-top">
+    <ion-icon slot="icon-only" name="menu"></ion-icon>
+  </ion-button>
+</div>
+
+<section class="side-menu" [@toggleMenu]="toggleMenu ? 'OpendMenu' : 'cloesedMenu'">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">
+        <ion-icon name="search"></ion-icon>
+      </ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  </ion-list>
+</section>
