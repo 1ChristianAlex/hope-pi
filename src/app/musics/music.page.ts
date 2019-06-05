@@ -10,6 +10,7 @@ export class musicPage implements OnInit {
   constructor(private spotify: SpotifyService, private load: IonicLoad) {}
   ngOnInit() {
     this.getMusic();
+    this.spotify.getMusicByUser();
   }
 
   public musics: any = {
