@@ -14,8 +14,15 @@ export class SpotifyService {
 
   private async getToken() {
     try {
+<<<<<<< HEAD
+=======
+      // let storageToken: storageToken = await this.ionStorage.getStorage(
+      //   'spotifyToken'
+      // );
+
+>>>>>>> ed55ca7e6ac742ed429f8957689b39f99db22d90
       let tokenResponse: any = await this.http
-        .get('http://localhost:3000/spotify')
+        .get('http://192.168.10.122:3000/spotify')
         .toPromise();
       let token: Token = JSON.parse(tokenResponse._body);
 
@@ -28,6 +35,7 @@ export class SpotifyService {
       // return this.spotify;
       this.spotify.setAccessToken(token.access_token);
       this.spotify.setPromiseImplementation(Q);
+
       return this.spotify;
     } catch (error) {
       return error;
@@ -35,7 +43,7 @@ export class SpotifyService {
   }
   private async refreshToken(): Promise<any> {
     await this.http
-      .get('http://localhost:3000/spotify')
+      .get('http://192.168.10.122:3000/spotify')
       .toPromise()
       .then((response: any) => {
         let token: Token = JSON.parse(response._body);

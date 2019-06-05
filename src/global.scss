@@ -197,6 +197,20 @@ ion-content.books-content {
     }
   }
 }
+.menu-content-icon {
+  position: absolute;
+  z-index: 999;
+  right: 5px;
+  top: 5px;
+
+  ion-button#menu-icon-top {
+    --background: transparent;
+    --border-color: none;
+    --border-radius: none;
+    --box-shadow: none;
+  }
+}
+
 section.main-content-btn {
   width: 100%;
   height: fit-content;
@@ -280,6 +294,10 @@ ion-content.what-happened-content {
       ion-img {
         padding: 10px;
       }
+    }
+    .active-emotion {
+      border: 1px solid $headerFooter;
+      transition: 0.3s;
     }
   }
   .emotion-selection {
