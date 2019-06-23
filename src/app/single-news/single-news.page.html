@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Noticias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="single-news-content">
   <ion-card>
-    <ion-img src="../../assets/slides/3.jpg"></ion-img>
+    <ion-img [src]="singleNews?.thumb"></ion-img>
     <ion-card-header class="card-single-post-header">
       <ion-card-title>{{ singleNews?.title }}</ion-card-title>
     </ion-card-header>

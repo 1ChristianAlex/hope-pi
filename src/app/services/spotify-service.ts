@@ -14,16 +14,11 @@ export class SpotifyService {
 
   private async getToken() {
     try {
-<<<<<<< HEAD
-=======
       // let storageToken: storageToken = await this.ionStorage.getStorage(
       //   'spotifyToken'
       // );
 
->>>>>>> ed55ca7e6ac742ed429f8957689b39f99db22d90
-      let tokenResponse: any = await this.http
-        .get('http://192.168.10.122:3000/spotify')
-        .toPromise();
+      let tokenResponse: any = await this.http.get('http://localhost:3000/spotify').toPromise();
       let token: Token = JSON.parse(tokenResponse._body);
 
       // this.ionStorage.setStorage('spotifyToken', {
@@ -43,7 +38,7 @@ export class SpotifyService {
   }
   private async refreshToken(): Promise<any> {
     await this.http
-      .get('http://192.168.10.122:3000/spotify')
+      .get('http://localhost:3000/spotify')
       .toPromise()
       .then((response: any) => {
         let token: Token = JSON.parse(response._body);
@@ -58,11 +53,9 @@ export class SpotifyService {
   public async getAlbum() {
     await this.getToken();
 
-    let album: any = await this.spotify
-      .getAlbum('06IKD4hvarANlm2BJMzsSq')
-      .catch(err => {
-        console.log(err);
-      });
+    let album: any = await this.spotify.getAlbum('06IKD4hvarANlm2BJMzsSq').catch(err => {
+      console.log(err);
+    });
 
     let returnAlbum = {
       tracks: album.tracks.items,

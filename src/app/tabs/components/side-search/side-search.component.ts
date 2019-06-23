@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Platform } from '@ionic/angular';
+import { UtilitsMetods } from '../../../services/utilits';
 
 @Component({
   selector: 'app-side-search',
@@ -16,11 +12,10 @@ import {
         'cloesedMenu',
         style({
           position: ' absolute',
-          top: '9%',
           background: ' #01a6d0',
           width: ' 70%',
           right: '-100%',
-          height: ' 82%',
+
           'z-index': ' 99'
         })
       ),
@@ -28,11 +23,9 @@ import {
         'OpendMenu',
         style({
           position: ' absolute',
-          top: '9%',
           background: ' #01a6d0',
           width: ' 70%',
           right: ' 0',
-          height: ' 82%',
           'z-index': ' 99'
         })
       ),
@@ -41,11 +34,28 @@ import {
   ]
 })
 export class SideSearchComponent implements OnInit {
-  constructor() {}
+  constructor(private plat: Platform, private util: UtilitsMetods) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.positionMenu();
+  }
   public toggleMenu = false;
   public toggleMenuE() {
     this.toggleMenu = !this.toggleMenu;
+  }
+
+  private positionMenu() {
+    let plat = this.plat.platforms();
+    let height = this.plat.height();
+    console.log(height);
+    if (plat.includes('ios') || plat.includes('iphone')) {
+      (document.querySelector('.menu-content-icon') as HTMLElement).style.top = '-5px';
+      (document.querySelector('.side-menu') as HTMLElement).style.top = '45px';
+      (document.querySelector('.side-menu') as HTMLElement).style.height = `${height - 95}px`;
+    } else {
+      (document.querySelector('.menu-content-icon') as HTMLElement).style.top = '5px';
+      (document.querySelector('.side-menu') as HTMLElement).style.top = '56px';
+      (document.querySelector('.side-menu') as HTMLElement).style.height = `${height - 112}px`;
+    }
   }
 }

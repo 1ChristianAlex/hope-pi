@@ -8,15 +8,13 @@
 
 <ion-content class="home-content">
   <ion-slides mode="md" pager="md" scrollbar="md">
-    <ion-slide>
-      <ion-img src="../../assets/slides/1.jpg"></ion-img>
+    <ion-slide *ngFor="let post of slideHome; " class="ion-card-home" (click)="openNews(post)">
+      <ion-img [src]="post?.thumb"></ion-img>
+      <ion-text>
+        {{post?.title}}
+      </ion-text>
     </ion-slide>
-    <ion-slide>
-      <ion-img src="../../assets/slides/2.jpg"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <ion-img src="../../assets/slides/3.jpg"></ion-img>
-    </ion-slide>
+
   </ion-slides>
 
   <section class="mPhrase">
@@ -29,12 +27,11 @@
 
   <ion-card *ngFor="let post of newsHome" class="ion-card-home" (click)="openNews(post)">
     <ion-card-header class="card-home-header">
-      <ion-card-subtitle>{{ post?.subtitle }}</ion-card-subtitle>
       <ion-card-title>{{ post?.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="content-home">
       <div class="bg-image">
-        <ion-img src="../../assets/slides/3.jpg"></ion-img>
+        <ion-img [src]="post?.thumb"></ion-img>
       </div>
     </ion-card-content>
   </ion-card>

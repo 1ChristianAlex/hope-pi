@@ -62,10 +62,24 @@ ion-content.login-content.sign-in {
   }
 }
 ion-content.home-content {
+  --background: #c8e9f1;
+  ion-card {
+    --background: #ffffff;
+  }
+  ion-slide {
+    position: relative;
+    ion-text {
+      position: absolute;
+      bottom: 35px;
+      color: white;
+      font-weight: 600;
+    }
+  }
   .ion-card-home {
     .card-home-header {
       width: 70%;
       float: right;
+      padding: 15px 25px;
       ion-card-title {
         font-size: 12pt;
       }
@@ -74,10 +88,14 @@ ion-content.home-content {
       }
     }
     .content-home {
+      padding: 0;
       width: 30%;
       float: left;
       .bg-image {
         background-color: #00ccff;
+        ion-img {
+          margin: 25% 0;
+        }
       }
     }
   }
@@ -201,7 +219,6 @@ ion-content.books-content {
   position: absolute;
   z-index: 999;
   right: 5px;
-  top: 5px;
 
   ion-button#menu-icon-top {
     --background: transparent;
@@ -309,5 +326,42 @@ ion-content.what-happened-content {
   .send-what-container {
     width: fit-content;
     margin: 0 auto;
+  }
+}
+ion-title {
+  text-align: center;
+}
+ion-content {
+  --background: #c8e9f1;
+  ion-card {
+    --background: #ffffff !important;
+  }
+}
+section.back-btn {
+  position: absolute;
+  z-index: 99;
+  top: 5px;
+  ion-button {
+    --background: #00ccff;
+    --box-shadow: none;
+    --border: none;
+
+    button {
+      --box-shadow: none;
+      --border: none;
+    }
+  }
+  ion-button.ios-button {
+    --background: #00ccff;
+    --box-shadow: none;
+    --border: none;
+    padding: 2px 0px;
+    height: auto;
+    button {
+      --box-shadow: none;
+      --border: none;
+      padding: 2px 0px;
+      height: auto;
+    }
   }
 }

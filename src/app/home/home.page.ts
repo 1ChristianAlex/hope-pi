@@ -10,30 +10,32 @@ import { IonicLoad } from '../services/ionLoading';
   templateUrl: 'home.page.html'
 })
 export class homePage implements OnInit {
-  constructor(
-    public fb: FireBaseServiceService,
-    private ionStorage: ionicStorage,
-    private router: Router,
-    private load: IonicLoad
-  ) {}
+  constructor(public fb: FireBaseServiceService, private ionStorage: ionicStorage, private router: Router, private load: IonicLoad) {}
   ngOnInit() {
     //    this.verifyAlertButon();
     this.getNews();
     this.getPhraseHome();
   }
   public valueBtnAlert: boolean = true;
-  public newsHome: Array<Post> = [];
+  public newsHome: Array<any> = [];
   public phrase: any = '';
-  private async verifyAlertButon() {
-    let userLocal: User = await this.ionStorage.getStorage('userLocalInfo');
-    userLocal ? (this.valueBtnAlert = userLocal.btnConfig) : true;
-  }
+  public slideHome = [];
+
   public async getNews() {
     await this.load.openLoading();
     let news = await this.fb.getNews();
-    this.newsHome = news;
+
+    let postComplet = news.map(async (ePost, i) => {
+      let newThumb = await this.fb.getPostThumb(ePost.thumb);
+      if (i <= 3) {
+        this.slideHome.push({ ...ePost, thumb: newThumb });
+      }
+      return { ...ePost, thumb: newThumb };
+    });
+    this.newsHome = await Promise.all(postComplet);
     await this.load.closeLoading();
   }
+
   public openNews(news: News) {
     this.router.navigate(['app/home/singleNews'], {
       queryParams: news

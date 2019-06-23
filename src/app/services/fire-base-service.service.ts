@@ -8,14 +8,9 @@ import { Post, userCaseForm } from './interfaces';
   providedIn: 'root'
 })
 export class FireBaseServiceService {
-  constructor(
-    private fBase: AngularFireDatabase,
-    private fStorage: AngularFireStorage
-  ) {}
+  constructor(private fBase: AngularFireDatabase, private fStorage: AngularFireStorage) {}
   public async getAgain() {
-    return await this.fBase
-      .object('firebase')
-      .update({ testez: { testea: 123, firefromIonic: true } });
+    return await this.fBase.object('firebase').update({ testez: { testea: 123, firefromIonic: true } });
   }
   public async getFiles(): Promise<Observable<any>> {
     try {
@@ -63,6 +58,9 @@ export class FireBaseServiceService {
         });
     });
   }
+  public getPostThumb(path: string) {
+    return this.fStorage.storage.ref(path).getDownloadURL();
+  }
   public getRandomPhrase() {
     return new Promise((res, rej) => {
       this.fBase
@@ -77,11 +75,6 @@ export class FireBaseServiceService {
   }
   public sendUserDataSitualtion(userSituaiton: userCaseForm, uid: string) {
     let date = new Date();
-    this.fBase
-      .list(
-        `users/${uid}/${date.getDate()}-${date.getMonth() +
-          1}-${date.getFullYear()}}`
-      )
-      .push(userSituaiton);
+    this.fBase.list(`users/${uid}/${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`).push(userSituaiton);
   }
 }
