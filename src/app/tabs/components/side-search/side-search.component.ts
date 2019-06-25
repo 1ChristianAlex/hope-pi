@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Platform } from '@ionic/angular';
 import { UtilitsMetods } from '../../../services/utilits';
+import { ionicStorage } from '../../../services/ionic-storage';
 
 @Component({
   selector: 'app-side-search',
@@ -34,12 +35,14 @@ import { UtilitsMetods } from '../../../services/utilits';
   ]
 })
 export class SideSearchComponent implements OnInit {
-  constructor(private plat: Platform, private util: UtilitsMetods) {}
+  constructor(private plat: Platform, private storage: ionicStorage, private Utilits: UtilitsMetods) {}
 
   ngOnInit() {
     this.positionMenu();
+    this.getUserInfo();
   }
   public toggleMenu = false;
+  public userLocalSide = {};
   public toggleMenuE() {
     this.toggleMenu = !this.toggleMenu;
   }
@@ -47,7 +50,7 @@ export class SideSearchComponent implements OnInit {
   private positionMenu() {
     let plat = this.plat.platforms();
     let height = this.plat.height();
-    console.log(height);
+
     if (plat.includes('ios') || plat.includes('iphone')) {
       (document.querySelector('.menu-content-icon') as HTMLElement).style.top = '-5px';
       (document.querySelector('.side-menu') as HTMLElement).style.top = '45px';
@@ -57,5 +60,18 @@ export class SideSearchComponent implements OnInit {
       (document.querySelector('.side-menu') as HTMLElement).style.top = '56px';
       (document.querySelector('.side-menu') as HTMLElement).style.height = `${height - 112}px`;
     }
+  }
+  public goEdit() {
+    this.Utilits.navigateRouter('config/edit', false);
+    this.toggleMenuE();
+  }
+  private async getUserInfo() {
+    let { name, lastname, photoURL } = await this.storage.getStorage('userLocalInfo');
+    console.log(photoURL);
+    this.userLocalSide = {
+      name,
+      lastname,
+      photoURL
+    };
   }
 }

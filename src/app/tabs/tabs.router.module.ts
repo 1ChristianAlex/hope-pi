@@ -16,8 +16,7 @@ const routes: Routes = [
           },
           {
             path: 'singleNews',
-            loadChildren:
-              '../single-news/single-news.module#SingleNewsPageModule'
+            loadChildren: '../single-news/single-news.module#SingleNewsPageModule'
           }
         ]
       },
@@ -56,9 +55,8 @@ const routes: Routes = [
             loadChildren: '../config/config.module#ConfigPageModule'
           },
           {
-            path: 'alertConfig',
-            loadChildren:
-              '../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
+            path: 'edit',
+            loadChildren: '../edit-user/edit-user.module#EditUserPageModule'
           }
         ]
       },
@@ -67,13 +65,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren:
-              '../what-happened/what-happened.module#WhatHappenedPageModule'
-          },
-          {
-            path: 'alertConfig',
-            loadChildren:
-              '../config-panic-btn/config-panic-btn.module#ConfigPanicBtnPageModule'
+            loadChildren: '../what-happened/what-happened.module#WhatHappenedPageModule'
           }
         ]
       },

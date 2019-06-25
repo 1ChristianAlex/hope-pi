@@ -9,11 +9,7 @@ import { auth } from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(
-    private fBase: AngularFireAuth,
-    private fData: AngularFireDatabase,
-    private ionicS: ionicStorage
-  ) {}
+  constructor(private fBase: AngularFireAuth, private fData: AngularFireDatabase, private ionicS: ionicStorage) {}
 
   public loginApp(user: User): Promise<any> {
     return this.fBase.auth.signInWithEmailAndPassword(user.email, user.pass);
@@ -41,20 +37,21 @@ export class AuthService {
     return this.fBase.auth.signOut();
   }
   public newUser(user: newUser) {
-    return this.fBase.auth
-      .createUserWithEmailAndPassword(user.email, user.pass)
-      .then((userC: auth.UserCredential) => {
-        console.log(userC);
-        this.fData.object(`users/${userC.user.uid}`).set({
-          uid: userC.user.uid,
-          name: user.name,
-          lastname: user.lastname,
-          email: user.email,
-          pass: user.pass,
-          photoURL: 'defaultPhoto',
-          bornDate: user.bornDate,
-          btnConfig: user.btnConfig
-        });
+    return this.fBase.auth.createUserWithEmailAndPassword(user.email, user.pass).then((userC: auth.UserCredential) => {
+      console.log(userC);
+      this.fData.object(`users/${userC.user.uid}`).set({
+        uid: userC.user.uid,
+        name: user.name,
+        lastname: user.lastname,
+        email: user.email,
+        pass: user.pass,
+        photoURL: 'defaultPhoto',
+        bornDate: user.bornDate,
+        btnConfig: user.btnConfig
       });
+      this.ionicS.setStorage('userLocalInfo', {
+        ...userC
+      });
+    });
   }
 }

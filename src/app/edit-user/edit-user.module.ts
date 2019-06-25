@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ConfigPanicBtnPage } from './config-panic-btn.page';
+import { EditUserPage } from './edit-user.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConfigPanicBtnPage
+    component: EditUserPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ConfigPanicBtnPage]
+  declarations: [EditUserPage]
 })
-export class ConfigPanicBtnPageModule {}
+export class EditUserPageModule {}
