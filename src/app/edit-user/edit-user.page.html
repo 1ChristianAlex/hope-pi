@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="editFile()">
+    <ion-item>
+      <ion-label position="floating">Nome <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Sobrenome <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="getFile()">
+        Escolher Foto
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme Senha <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-button block color="primary" type="submit">
+      Editar
+    </ion-button>
+  </form>
+</ion-content>

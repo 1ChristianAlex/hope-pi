@@ -5,13 +5,39 @@
 </div>
 
 <section class="side-menu" [@toggleMenu]="toggleMenu ? 'OpendMenu' : 'cloesedMenu'">
+
+
+  <ng-container *ngIf="userLocalSide.photoURL != 'defaultPhoto'; else elseTemplate">
+    <div class="custom-user-img">
+      <div class="img-custom">
+        <img [src]="image" />
+      </div>
+      <ion-label>{{userLocalSide?.name}} {{userLocalSide?.lastname}}</ion-label>
+    </div>
+
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="default-user-icon">
+
+      <div class="icon-default">
+        <ion-icon name="contact"></ion-icon>
+      </div>
+      <ion-label>{{userLocalSide?.name}} {{userLocalSide?.lastname}}</ion-label>
+    </div>
+
+  </ng-template>
   <ion-list>
+    <ion-item (click)="goEdit()">
+      <ion-label>Editar</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pessoas</ion-label>
+    </ion-item>
     <ion-item>
       <ion-label position="floating">
-        <ion-icon name="search"></ion-icon>
+        <ion-icon name="search"></ion-icon> Pesquisar
       </ion-label>
       <ion-input></ion-input>
     </ion-item>
-
   </ion-list>
 </section>

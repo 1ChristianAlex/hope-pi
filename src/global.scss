@@ -365,3 +365,19 @@ section.back-btn {
     }
   }
 }
+section.side-menu {
+  ion-list,
+  ion-item {
+    --background: rgb(1, 166, 208);
+    color: white;
+    background: rgb(1, 166, 208);
+  }
+  padding-top: 30px;
+  .default-user-icon {
+    text-align: center;
+    color: white;
+    ion-icon {
+      font-size: 50pt;
+    }
+  }
+}
